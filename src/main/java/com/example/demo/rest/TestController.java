@@ -105,7 +105,7 @@ public class TestController {
     }
 
     @Test
-    @ResponseBody
+//    @ResponseBody
     @RequestMapping("/test3")
     public String test3(Model model) {
         //查询数据库所有用户
