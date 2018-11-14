@@ -7,6 +7,7 @@ import org.springframework.data.domain.Pageable;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.Future;
 
 /**
  * @author weicl
@@ -19,6 +20,8 @@ public interface AyUserService {
     AyUser findById(Integer id);
 
     List<AyUser> findAll();
+
+    Future<List<AyUser>> findAsyncAll();
 
     AyUser save(AyUser ayUser);
 

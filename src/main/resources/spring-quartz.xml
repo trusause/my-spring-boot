@@ -27,7 +27,7 @@
         </property>
         <!-- 定义触发规则，每10秒执行一次 -->
         <property name="cronExpression">
-            <value>0/30 * * * * ?</value>
+            <value>0 0/5 * * * ?</value>
         </property>
     </bean>
 

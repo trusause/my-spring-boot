@@ -9,13 +9,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.redis.core.RedisTemplate;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.annotation.Resource;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
+import java.util.concurrent.Future;
 import java.util.stream.Collectors;
 
 /**
@@ -64,9 +68,45 @@ public class AyUserServiceImpl implements AyUserService {
         return null;
     }
 
+    /**
+     * 同步查询数据库方法
+     *
+     * @return
+     */
     @Override
     public List<AyUser> findAll() {
-        return ayUserRepository.findAll();
+        try {
+            log.info("开始做任务");
+            long start = System.currentTimeMillis();
+            List<AyUser> ayUserList = ayUserRepository.findAll();
+            long end = System.currentTimeMillis();
+            log.info("完成任务耗时：" + (end - start) + "毫秒");
+            return ayUserList;
+        } catch (Exception e) {
+            log.error("method [findAll] error", e);
+            return Collections.EMPTY_LIST;
+        }
+    }
+
+    /**
+     * 异步查询数据库方法
+     *
+     * @return
+     */
+    @Async
+    @Override
+    public Future<List<AyUser>> findAsyncAll() {
+        try {
+            log.info("开始做任务");
+            long start = System.currentTimeMillis();
+            List<AyUser> ayUserList = ayUserRepository.findAll();
+            long end = System.currentTimeMillis();
+            log.info("完成任务耗时：" + (end - start) + "毫秒");
+            return new AsyncResult<>(ayUserList);
+        } catch (Exception e) {
+            log.error("method [findAll] error", e);
+            return new AsyncResult<>(null);
+        }
     }
 
     @Override

@@ -31,8 +31,8 @@ public class AyUserListener implements ServletContextListener {
         log.info("ServletContext 上下文初始化");
         //查询数据库中的所有用户
         List<AyUser> ayUserList = ayUserService.findAll();
-        redisTemplate.delete(ALL_USER);
         if (ayUserList.size() > 0) {
+            redisTemplate.delete(ALL_USER);
             redisTemplate.opsForList().leftPushAll(ALL_USER, ayUserList);
             List<AyUser> queryUserList = redisTemplate.opsForList().range(ALL_USER, 0, -1);
 //        System.out.println("缓存中目前的用户数有：" + queryUserList.size() + "人");
