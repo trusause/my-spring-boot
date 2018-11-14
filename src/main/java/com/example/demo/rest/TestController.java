@@ -161,7 +161,6 @@ public class TestController {
         ayMoodProducer.sendMessage(destination, "hello,mq!!!");
     }
 
-    @Test
     @ResponseBody
     @GetMapping("/test9")
     public String testAyMoodAsynSave() {
