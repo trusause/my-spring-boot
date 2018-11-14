@@ -18,6 +18,7 @@ import java.util.List;
 public interface AyUserRepository extends JpaRepository<AyUser, Integer>, JpaSpecificationExecutor<AyUser> {
 
 //    AyUser findOne(String id);
+    
 
     List<AyUser> findByName(String name);
 
