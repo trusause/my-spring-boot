@@ -7,7 +7,7 @@ import javax.servlet.annotation.WebFilter;
 import java.io.IOException;
 
 @Configuration
-@WebFilter(filterName = "auUserFilter", urlPatterns = "/*")
+@WebFilter(filterName = "ayUserFilter", urlPatterns = "/*")
 public class AyUserFilter implements Filter {
     @Override
     public void init(FilterConfig filterConfig) throws ServletException {
