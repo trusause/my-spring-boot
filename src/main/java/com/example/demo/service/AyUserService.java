@@ -37,4 +37,6 @@ public interface AyUserService {
 
     AyUser findByNameAndPassword(@Param("name") String name, @Param(value = "password") String password);
 
+    AyUser findByNameAndPasswordRetry(String name,String password);
+
 }

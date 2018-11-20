@@ -6,6 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.web.servlet.ServletComponentScan;
 import org.springframework.context.annotation.ImportResource;
+import org.springframework.retry.annotation.EnableRetry;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.test.context.junit4.SpringRunner;
 
@@ -13,6 +14,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 @ServletComponentScan(basePackages = {"cn.example.demo"})
 @SpringBootApplication
 @EnableAsync
+@EnableRetry
 public class MySpringBootApplication {
 
 	public static void main(String[] args) {
