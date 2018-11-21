@@ -13,41 +13,20 @@ import java.util.Date;
  * @Author: weicl
  * @Date: 2018/11/13 5:11 PM
  * @Version 1.0
- * @Description ${description}
+ * @Description 用户角色实体
  */
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AyMood implements Serializable {
+public class AyRole implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    /**
-     * 说说内容
-     */
     @Column
-    private String content;
-
-    /**
-     * 用户id
-     */
-    @Column
-    private String userId;
-
-    /**
-     * 点赞数
-     */
-    @Column
-    private Integer praiseNum;
-
-    /**
-     * 发表时间
-     */
-    @Column
-    private Date publishTime;
+    private String name;
 
 }

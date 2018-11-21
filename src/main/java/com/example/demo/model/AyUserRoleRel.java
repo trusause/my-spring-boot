@@ -7,47 +7,34 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
 
 /**
  * @Author: weicl
  * @Date: 2018/11/13 5:11 PM
  * @Version 1.0
- * @Description ${description}
+ * @Description 用户-角色关联
  */
 @Entity
 @Data
 @Builder
 @NoArgsConstructor
 @AllArgsConstructor
-public class AyMood implements Serializable {
+public class AyUserRoleRel implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     /**
-     * 说说内容
-     */
-    @Column
-    private String content;
-
-    /**
      * 用户id
      */
     @Column
-    private String userId;
+    private Integer userId;
 
     /**
-     * 点赞数
+     * 角色id
      */
     @Column
-    private Integer praiseNum;
-
-    /**
-     * 发表时间
-     */
-    @Column
-    private Date publishTime;
+    private Integer roleId;
 
 }

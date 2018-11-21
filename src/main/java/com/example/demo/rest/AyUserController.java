@@ -25,6 +25,14 @@ public class AyUserController {
     @Autowired
     AyUserService ayUserService;
 
+    @RequestMapping("/test")
+    public String test3(Model model) {
+        //查询数据库所有用户
+        List<AyUser> ayUserList = ayUserService.findAll();
+        model.addAttribute("users", ayUserList);
+        return "ayUser";
+    }
+
     @RequestMapping("/findAll")
     public ResultDTO findAll(Model model) {
         List<AyUser> ayUserList = ayUserService.findAll();

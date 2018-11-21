@@ -138,6 +138,11 @@ public class AyUserServiceImpl implements AyUserService {
     }
 
     @Override
+    public AyUser findByUserName(String name) {
+        return ayUserRepository.findByName(name).get(0);
+    }
+
+    @Override
     public List<AyUser> findByNameLike(String name) {
         return ayUserRepository.findByNameLike(name);
     }

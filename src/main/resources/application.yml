@@ -80,7 +80,12 @@ spring:
     # 只有当ObjectMessage中的Object在可信任包内，才能被提取出来。该配置标识信任所有的包
     packages:
       trust-all: true
-
+  ### mongodb配置
+  data:
+    mongodb:
+      host: localhost
+      port: 27017
+      database: test
 logging:
   config: classpath:log4j2.xml
   level:

@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import com.example.demo.model.AyRole;
 import com.example.demo.model.AyUser;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.JpaSpecificationExecutor;
@@ -15,14 +16,8 @@ import java.util.List;
  * @since JDK 1.8
  */
 @Repository
-public interface AyUserRepository extends JpaRepository<AyUser, Integer>, JpaSpecificationExecutor<AyUser> {
+public interface AyRoleRepository extends JpaRepository<AyRole, Integer>, JpaSpecificationExecutor<AyRole> {
 
-//    AyUser findOne(String id);
 
-    List<AyUser> findByName(String name);
-
-    List<AyUser> findByNameLike(String name);
-
-    List<AyUser> findByIdIn(Collection<Integer> ids);
 
 }

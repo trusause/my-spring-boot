@@ -19,6 +19,8 @@ public interface AyUserService {
 
     AyUser findById(Integer id);
 
+    AyUser findByUserName(String name);
+
     List<AyUser> findAll();
 
     Future<List<AyUser>> findAsyncAll();
