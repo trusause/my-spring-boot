@@ -1,7 +1,9 @@
 package com.example.demo.rest;
 
 import com.example.demo.MySpringBootApplication;
+import com.example.demo.dto.AddressDTO;
 import com.example.demo.dto.ResultDTO;
+import com.example.demo.dto.UserDTO;
 import com.example.demo.message.AyMoodProducer;
 import com.example.demo.model.AyMood;
 import com.example.demo.model.AyUser;
@@ -27,11 +29,10 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import javax.jms.Destination;
+import javax.servlet.http.HttpServletRequest;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
+import java.util.*;
 import java.util.concurrent.Future;
 
 /**
@@ -45,7 +46,7 @@ import java.util.concurrent.Future;
 @RequestMapping("/test")
 @Log4j2
 @RunWith(SpringRunner.class)
-@SpringBootTest(classes =  MySpringBootApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@SpringBootTest(classes = MySpringBootApplication.class, webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class TestController {
 
     @Autowired
@@ -218,6 +219,21 @@ public class TestController {
         }
         long end = System.currentTimeMillis();
         log.info("总共耗时：" + (end - start) + "毫秒");
+    }
+
+    @ResponseBody
+    @GetMapping("/test12")
+    public ResultDTO httpTest(HttpServletRequest httpServletRequest) {
+        AddressDTO addressDTO = AddressDTO.builder().address("江苏南京").build();
+        UserDTO userDTO = UserDTO.builder()
+                .name("超级赛亚人")
+//                .addressDTO(addressDTO)
+                .build();
+        Map<String, String[]> map = httpServletRequest.getParameterMap();
+        Map<Object,Object> mapNew = new HashMap<>();
+        mapNew.put(UserDTO.builder().name("trusause").build(),addressDTO);
+        log.info(map);
+        return ResultDTO.builder().data(map).build();
     }
 
 }

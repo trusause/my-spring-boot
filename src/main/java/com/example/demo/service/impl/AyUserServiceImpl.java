@@ -163,4 +163,9 @@ public class AyUserServiceImpl implements AyUserService {
         log.info("[findByNameAndPasswordRetry]方法失败，重试了！");
         throw new BusinessException();
     }
+
+    @Override
+    public Long findUserTotalNum() {
+        return ayUserRepository.count();
+    }
 }

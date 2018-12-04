@@ -96,3 +96,27 @@ logging:
 mybatis:
   mapper-locations: classpath:/mappers/*Mapper.xml
   type-aliases-package: com.example.demo.dao
+### 应用监控配置
+management:
+#  security:
+#    enabled: false #敏感信息访问限制 # SpringBoot2.0已经不使用了
+#  endpoint:
+#    beans:
+#      enabled: false #单个端点配置
+  #暴露端点和排除端点的配置
+  endpoints:
+    web:
+      exposure:
+        include: "*"  #需要登录才能访问！ * 在yaml 文件属于关键字，所以需要加引号。SpringBoot2.0之后的Actuator只暴露了health和info端点，所以访问其他断点如beans会报404，在SpringBoot的application.yml配置文件中加入这句话暴露所有端点。
+        exclude: env,beans  #就算登录了，也不让访问！
+#    health:
+#      id: myhealth
+#  server:
+#    servlet:
+#      context-path: /manage
+#    port: 8081
+#  port: #指定访问这些监控方法的端口
+#  address: 127.0.0.1 # 指定地址，比如只能通过本机监控，可以设置address: 127.0.0.1
+#endpoint:
+#  bean:
+#    sensitive: false #设置关闭安全限制

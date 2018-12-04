@@ -41,4 +41,6 @@ public interface AyUserService {
 
     AyUser findByNameAndPasswordRetry(String name,String password);
 
+    Long findUserTotalNum();
+
 }
